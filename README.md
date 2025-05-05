@@ -103,7 +103,5 @@ AOS Library
 
 Icons from Heroicons
 
-🙌 Support
 
-For any questions or support, feel free to message me via Envato profile. Happy to help you get set up or customize this template further!
 
