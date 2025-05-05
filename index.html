@@ -1,0 +1,842 @@
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="en"  class="scroll-smooth" x-data="{ mobileMenuOpen: false }">
+
+<head>
+  
+  
+  
+  <meta charset="UTF-8" />
+  
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Primary Meta Tags -->
+  <title>BinjaTech – Scalable IT Solutions for the Future</title>
+  <meta name="title" content="BinjaTech – Scalable IT Solutions for the Future" />
+  <meta name="description" content="Empowering businesses with scalable, secure, and modern IT solutions. Cloud, automation, cybersecurity, and more – tailored for your growth." />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.binjatech.com/" />
+  <meta property="og:title" content="BinjaTech – Scalable IT Solutions for the Future" />
+  <meta property="og:description" content="Empowering businesses with scalable, secure, and modern IT solutions. Cloud, automation, cybersecurity, and more." />
+  <meta property="og:image" content="https://www.binjatech.com/og-image.jpg" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://www.binjatech.com/" />
+  <meta property="twitter:title" content="BinjaTech – Scalable IT Solutions for the Future" />
+  <meta property="twitter:description" content="Empowering businesses with scalable, secure, and modern IT solutions." />
+  <meta property="twitter:image" content="https://www.binjatech.com/og-image.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            binja: {
+              50: '#F9FAFB',
+              100: '#E0ECFF',
+              200: '#dceeff',
+              300: '#cce2f9',
+              400: '#c2dff4',
+              900: '#0f172a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- AlpineJS for mobile toggle -->
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- AOS Animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- Lottie -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@1.6.0/dist/lottie-player.js"></script>
+</head>
+
+  <body x-data="{ scrolled: false, mobileMenuOpen: false }" @scroll.window="scrolled = window.scrollY > 10" x-init="window.onload = () => loaded = true">
+
+      <!-- Spinner -->
+      <div x-show="!loaded" class="fixed inset-0 flex items-center justify-center bg-white z-50 transition-opacity duration-300">
+        <div class="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+      </div>
+
+    <!-- Header -->
+   <!-- Header -->
+<header
+:class="scrolled ? 'sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-md' : 'absolute top-0 z-50'"
+class="w-full transition-all duration-300"
+>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+
+  <!-- Logo -->
+  <a href="#" class="flex items-center space-x-2">
+    <img class="h-10 w-auto" src="logo.png" alt="BinjaTech Logo" />
+  </a>
+
+  <!-- Desktop Nav -->
+  <nav class="hidden lg:flex items-center space-x-10">
+    <a href="#solutions" class="text-base lg:text-lg font-semibold text-gray-800 hover:text-blue-600 transition">Solutions</a>
+    <a href="#services" class="text-base lg:text-lg font-semibold text-gray-800 hover:text-blue-600 transition">Services</a>
+    <a href="#about" class="text-base lg:text-lg font-semibold text-gray-800 hover:text-blue-600 transition">About</a>
+    <a href="#contact" class="text-base lg:text-lg font-semibold text-gray-800 hover:text-blue-600 transition">Contact</a>
+  </nav>
+
+  <!-- Actions -->
+  <div class="flex items-center space-x-4">
+    <div class="relative hidden lg:inline-flex group">
+      <div class="absolute -inset-px rounded-md blur-md bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 opacity-70 group-hover:opacity-100 transition-all duration-700"></div>
+      <a href="#contact" class="relative inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-blue-600 rounded-md hover:bg-blue-700 transition">
+        Get Started Now
+      </a>
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-gray-700 focus:outline-none">
+      <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        <path x-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+</div>
+
+<!-- Mobile Menu with background -->
+<div x-show="mobileMenuOpen" x-transition class="lg:hidden px-4 pb-6 pt-4 bg-white/90 backdrop-blur-md space-y-4 shadow-md">
+  <a href="#solutions" class="block text-base font-medium text-gray-900 hover:text-blue-600">Solutions</a>
+  <a href="#services" class="block text-base font-medium text-gray-900 hover:text-blue-600">Services</a>
+  <a href="#about" class="block text-base font-medium text-gray-900 hover:text-blue-600">About</a>
+  <a href="#contact" class="block text-base font-medium text-gray-900 hover:text-blue-600">Contact</a>
+  <a href="#contact" class="block w-full text-center px-5 py-2 text-sm font-semibold text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition">
+    Talk to Our Team
+  </a>
+</div>
+</header>
+
+  
+    <!-- Hero Section -->
+    <section class="relative z-0 pt-6 lg:pt-10 pb-20 bg-gradient-to-br from-white via-[#E0ECFF] to-[#F9FAFB]">
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  
+        <div class="mt-14 grid grid-cols-1 lg:grid-cols-2 items-center gap-y-12 lg:gap-x-20">
+          <!-- Hero Text -->
+          <div data-aos="fade-right">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight">
+              Empowering Your <span class="text-blue-600">IT Strategy</span> for a Smarter Future
+            </h1>
+            <p class="mt-6 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-2xl text-gray-600 max-w-xl">
+              Scalable. Secure. Tailored IT solutions to help businesses evolve in the digital age.
+            </p>
+            <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row sm:items-center gap-4">
+
+              <!-- Primary CTA: Let’s Talk -->
+              <div class="relative inline-flex group">
+             
+                <a href="#services" class="text-base font-medium text-yellow-600 border border-blue-600 px-6 py-3 rounded-xl hover:bg-yellow-100 transition-all">
+                  Explore Our Services
+                </a>
+              
+              </div>
+            
+           
+            
+            </div>
+            
+          </div>
+  
+          <!-- Hero Lottie -->
+          <div class="flex justify-center lg:justify-end" data-aos="fade-left">
+            <lottie-player
+              src="https://lottie.host/ac2c5488-0619-4d66-a7e1-22c0deb9b8df/G9a78pf2h3.json"
+              background="transparent"
+              speed="1"
+              loop
+              autoplay
+              class="w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[650px] xl:max-w-[750px] 2xl:max-w-[850px] h-auto"
+            ></lottie-player>
+          </div>
+        </div>
+  
+        <!-- Logo Cloud -->
+        <div class="mt-20 flex justify-center" data-aos="fade-up">
+          <div class="px-4 py-6 w-full max-w-3xl text-center">
+            <h3 class="text-gray-800 font-semibold text-lg mb-8 tracking-wide">
+              Trusted by 100+ global teams & startups
+            </h3>
+            <div class="grid grid-cols-3 gap-6 justify-items-center items-center">
+              <img class="h-8 object-contain grayscale hover:grayscale-0 hover:scale-105 transition" src="logo-1.png" alt="Logo 1" />
+              <img class="h-8 object-contain grayscale hover:grayscale-0 hover:scale-105 transition" src="logo-2.png" alt="Logo 2" />
+              <img class="h-8 object-contain grayscale hover:grayscale-0 hover:scale-105 transition" src="logo-3.png" alt="Logo 3" />
+              <img class="h-8 object-contain grayscale hover:grayscale-0 hover:scale-105 transition" src="logo-4.png" alt="Logo 4" />
+              <img class="h-8 object-contain grayscale hover:grayscale-0 hover:scale-105 transition" src="logo-5.png" alt="Logo 5" />
+              <img class="h-8 object-contain grayscale hover:grayscale-0 hover:scale-105 transition" src="logo-6.png" alt="Logo 6" />
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </section>
+  
+
+    <!-- Solutions -->
+    <section id="solutions" class="solutions-section">
+      <div class="py-20 bg-gradient-to-r from-blue-900 via-gray-900 to-slate-800 text-white" data-aos="fade-up">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 class="text-3xl sm:text-4xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-green-400">
+            Our Core Solutions
+          </h2>
+          <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+            Innovative services designed to fuel your business transformation.
+          </p>
+      
+          <!-- Solution Cards -->
+          <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Card: Cloud Infrastructure -->
+            <div class="bg-gray-900 rounded-2xl shadow-xl hover:ring-2 hover:ring-blue-500 transition-all transform hover:-translate-y-2 p-8 text-center flex flex-col items-center" data-aos="zoom-in" data-aos-delay="100">
+              <h4 class="text-2xl font-bold mb-2">Cloud Infrastructure</h4>
+              <div class="w-12 h-1 bg-blue-500 rounded-full mb-4"></div>
+              <lottie-player src="https://lottie.host/e0e62ecf-54a8-493c-8563-05d668e5977d/6xFqo4jv4G.json" background="transparent" speed="1" loop autoplay style="width: 200px; height: 200px;" class="hover:scale-105 transition"></lottie-player>
+              <a href="/cloud-infrastructure.html" class="mt-6 text-blue-400 hover:underline text-sm font-medium">Learn More →</a>
+            </div>
+      
+            <!-- Card: Cybersecurity -->
+            <div class="bg-gray-900 rounded-2xl shadow-xl hover:ring-2 hover:ring-purple-500 transition-all transform hover:-translate-y-2 p-8 text-center flex flex-col items-center" data-aos="zoom-in" data-aos-delay="200">
+              <h4 class="text-2xl font-bold mb-2">Cybersecurity</h4>
+              <div class="w-12 h-1 bg-purple-500 rounded-full mb-4"></div>
+              <lottie-player src="https://lottie.host/50a760fd-4788-46ca-a253-a35c4a70fb7b/ONWonZUDc2.json" background="transparent" speed="1" loop autoplay style="width: 200px; height: 200px;" class="hover:scale-105 transition"></lottie-player>
+              <a href="/cybersecurity.html" class="mt-6 text-purple-400 hover:underline text-sm font-medium">Learn More →</a>
+            </div>
+      
+            <!-- Card: AI & Automation -->
+            <div class="bg-gray-900 rounded-2xl shadow-xl hover:ring-2 hover:ring-green-500 transition-all transform hover:-translate-y-2 p-8 text-center flex flex-col items-center" data-aos="zoom-in" data-aos-delay="300">
+              <h4 class="text-2xl font-bold mb-2">AI & Automation</h4>
+              <div class="w-12 h-1 bg-green-500 rounded-full mb-4"></div>
+              <lottie-player src="https://lottie.host/461adcc6-3479-4673-a9c2-965c482d9d19/Jjf4bizuyU.json" background="transparent" speed="1" loop autoplay style="width: 200px; height: 200px;" class="hover:scale-105 transition"></lottie-player>
+              <a href="/ai-automation.html" class="mt-6 text-green-400 hover:underline text-sm font-medium">Learn More →</a>
+            </div>
+      
+          </div>
+        </div>
+      </div>
+      
+    </section>
+    
+
+    <section id="why-us" class="why-us-section">
+      <div class="relative py-20 sm:py-24 lg:py-32 bg-white" data-aos="fade-up">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    
+          <!-- Tagline -->
+          <p class="inline-block px-5 py-2 text-sm font-semibold text-white bg-[#facc15] rounded-full shadow-md mb-6">
+            Empowering Businesses Through Technology
+          </p>
+    
+          <!-- Heading -->
+          <h2 class="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#EC4899]">
+            Why Choose BinjaTech?</span>
+          </h2>
+    
+          <!-- Description -->
+          <p class="max-w-2xl mx-auto text-base text-gray-600 leading-7">
+            At BinjaTech, we merge creativity and technology to craft solutions that solve real-world problems.
+            With deep expertise and a passion for innovation, we deliver transformation at every level of your business.
+          </p>
+    
+          <!-- CTA Button -->
+          <div class="relative inline-flex mt-10 group">
+            <div class="absolute -inset-px rounded-xl blur-md bg-gradient-to-br from-blue-400 via-blue-500 to-indigo-600 opacity-75 group-hover:opacity-100 transition-all duration-700"></div>
+            <a href="#solutions" class="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-blue-700 rounded-xl hover:bg-blue-800 transition">
+              Explore Our Solutions
+            </a>
+          </div>
+        </div>
+    
+        <!-- Illustration -->
+        <div class="mt-16 md:mt-20 px-4">
+          <div class="mx-auto">
+            <img
+              src="why.png"
+              alt="About Illustration"
+              class="w-full h-auto object-cover object-top mx-auto
+                     max-w-none sm:max-w-none md:max-w-3xl lg:max-w-5xl xl:max-w-6xl"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    
+    
+    <section id="services" class="relative py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+        <!-- Section Heading -->
+        <div class="text-center mb-14" data-aos="fade-up">
+          <!-- Heading -->
+          <h2 class="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#EC4899]">
+            What We Offer?</span>
+          </h2>
+          <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+            Our specialized services are designed to scale your business with technology-driven strategies.
+          </p>
+        </div>
+    
+        <!-- Wrapper to allow glow to spread -->
+        <div class="relative overflow-visible mt-10">
+          <!-- Glow Behind Card -->
+          <div class="absolute inset-0 -top-6 -bottom-6 -left-6 -right-6 blur-2xl opacity-40 rounded-[2rem] bg-gradient-to-tr from-[#E0ECFF] via-[#dceeff] to-[#F9FAFB] z-0"></div>
+    
+          <!-- Main Card with Content -->
+          <div class="relative bg-white rounded-3xl shadow-xl p-10 md:p-14 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-10">
+    
+            <!-- Left Column -->
+            <ul class="space-y-8">
+              <li class="flex items-start space-x-4" data-aos="fade-right" data-aos-delay="100">
+                <span class="text-blue-600">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+                <p class="text-gray-800 text-lg leading-relaxed">
+                  <strong>IT Consulting:</strong> Expert guidance to align your IT strategy with business goals.
+                </p>
+              </li>
+    
+              <li class="flex items-start space-x-4" data-aos="fade-right" data-aos-delay="200">
+                <span class="text-purple-600">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+                <p class="text-gray-800 text-lg leading-relaxed">
+                  <strong>Cloud Migration:</strong> Move to the cloud with zero downtime and maximum security.
+                </p>
+              </li>
+    
+              <li class="flex items-start space-x-4" data-aos="fade-right" data-aos-delay="300">
+                <span class="text-green-600">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+                <p class="text-gray-800 text-lg leading-relaxed">
+                  <strong>Cybersecurity Services:</strong> Shield your data and infrastructure with 24/7 protection.
+                </p>
+              </li>
+            </ul>
+    
+            <!-- Right Column -->
+            <div class="bg-blue-50 rounded-2xl p-8 shadow-lg text-center self-center" data-aos="zoom-in" data-aos-delay="200">
+              <h3 class="text-xl font-semibold text-gray-800 mb-6">Scalable Services for Modern Businesses</h3>
+              <div class="w-full px-4 sm:px-0 flex justify-center">
+                <div class="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl">
+              <lottie-player
+                src="https://lottie.host/435fbf88-f8c5-44cd-a577-f04b1e5705f2/2KKvCBHGI5.json"
+                background="transparent"
+                speed="1"
+                loop
+                autoplay
+                class="w-full h-auto"
+              ></lottie-player>
+              </div>
+            </div>
+    
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    <section class="relative py-20 bg-white sm:py-24 lg:py-28 overflow-visible">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+        <!-- Section Heading -->
+        <div class="max-w-2xl mx-auto text-center mb-14" data-aos="fade-up">
+          <h2 class="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#EC4899]">
+            How Does It Work?
+          </h2>
+          <p class="mt-4 text-base text-gray-600 leading-relaxed max-w-lg mx-auto">
+            Our streamlined process takes you from sign-up to launch in just three powerful steps.
+          </p>
+        </div>
+    
+        <!-- Background Glow -->
+        <div class="absolute inset-0 -top-10 -bottom-10 blur-3xl opacity-30 rounded-[3rem] bg-gradient-to-br from-[#E0ECFF] via-[#cce2f9] to-[#F9FAFB] z-0"></div>
+    
+        <!-- Connecting Line -->
+        <div class="relative mt-6 hidden md:block" data-aos="zoom-in">
+          <img src="images/curved-dotted-line.svg"
+               alt="Step Flow" class="absolute w-full top-8 left-0 px-8 lg:px-28 xl:px-40" />
+        </div>
+    
+        <!-- Steps -->
+        <div class="relative z-10 grid grid-cols-1 gap-y-12 md:grid-cols-3 gap-x-12 text-center">
+    
+          <!-- Step 1 -->
+          <div data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-center justify-center w-16 h-16 mx-auto bg-gradient-to-br from-[#60A5FA] via-[#3B82F6] to-[#2563EB] text-white text-xl font-bold rounded-full shadow-lg">
+              1
+            </div>
+            <h3 class="mt-6 text-xl font-semibold text-gray-900">Create Your Free Account</h3>
+            <p class="mt-3 text-base text-gray-600">Sign up in seconds and unlock your personalized dashboard to get started.</p>
+          </div>
+    
+          <!-- Step 2 -->
+          <div data-aos="fade-up" data-aos-delay="200">
+            <div class="flex items-center justify-center w-16 h-16 mx-auto bg-gradient-to-br from-[#A78BFA] via-[#8B5CF6] to-[#7C3AED] text-white text-xl font-bold rounded-full shadow-lg">
+              2
+            </div>
+            <h3 class="mt-6 text-xl font-semibold text-gray-900">Build Your Website</h3>
+            <p class="mt-3 text-base text-gray-600">Use our intuitive builder to customize and deploy your powerful business site.</p>
+          </div>
+    
+          <!-- Step 3 -->
+          <div data-aos="fade-up" data-aos-delay="300">
+            <div class="flex items-center justify-center w-16 h-16 mx-auto bg-gradient-to-br from-[#6EE7B7] via-[#34D399] to-[#10B981] text-white text-xl font-bold rounded-full shadow-lg">
+              3
+            </div>
+            <h3 class="mt-6 text-xl font-semibold text-gray-900">Launch & Go Live</h3>
+            <p class="mt-3 text-base text-gray-600">Publish your project, track growth, and scale confidently with expert support.</p>
+          </div>
+    
+        </div>
+      </div>
+    </section>
+    
+    
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials-section">
+      <div class="py-20 sm:py-24 lg:py-32 bg-white" data-aos="fade-up">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <!-- Section Heading -->
+          <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-900">
+              Don’t just take our word for it. Over 1000+ teams trust BinjaTech.
+            </h2>
+          </div>
+      
+          <!-- Testimonial Cards -->
+          <div class="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-10 max-w-5xl mx-auto">
+      
+            <!-- Testimonial Card 1 -->
+            <div class="bg-gray-100 rounded-2xl p-8 shadow-md xl:-rotate-2 hover:rotate-0 transition">
+              <blockquote class="text-gray-900 text-xl font-medium leading-9">
+                “BinjaTech helped us migrate to the cloud without a hitch. Their team is knowledgeable and incredibly responsive!”
+              </blockquote>
+              <div class="mt-6">
+                <p class="font-semibold text-gray-900">Elena D.</p>
+                <p class="text-sm text-gray-600">IT Director, FinPro Solutions</p>
+              </div>
+              <div class="flex justify-between items-center mt-6 pt-5 border-t border-gray-200">
+                <img src="alterbone.svg" alt="FinPro Logo" class="h-7" />
+                <img src="avatar-female-2.png" alt="Elena D." class="w-10 h-10 rounded-full object-cover" />
+              </div>
+            </div>
+      
+            <!-- Testimonial Card 2 -->
+            <div class="bg-gray-100 rounded-2xl p-8 shadow-md xl:rotate-2 hover:rotate-0 transition">
+              <blockquote class="text-gray-900 text-xl font-medium leading-9">
+                “We rely on BinjaTech’s cybersecurity stack to keep our systems secure. Their automation tools save us hours every week.”
+              </blockquote>
+              <div class="mt-6">
+                <p class="font-semibold text-gray-900">Omar Al Khalid</p>
+                <p class="text-sm text-gray-600">CIO, Nexa Industries</p>
+              </div>
+              <div class="flex justify-between items-center mt-6 pt-5 border-t border-gray-200">
+                <img src="ridoria.svg" alt="Nexa Logo" class="h-7" />
+                <img src="avatar-male-1.png" alt="Omar Al Khalid" class="w-10 h-10 rounded-full object-cover" />
+              </div>
+            </div>
+      
+            <!-- Testimonial Card 3 -->
+            <div class="bg-gray-100 rounded-2xl p-8 shadow-md xl:-rotate-2 hover:rotate-0 transition">
+              <blockquote class="text-gray-900 text-xl font-medium leading-9">
+                “From setup to support, BinjaTech delivers. Our project timeline was cut in half with their automation expertise.”
+              </blockquote>
+              <div class="mt-6">
+                <p class="font-semibold text-gray-900">Natalie Chua</p>
+                <p class="text-sm text-gray-600">Head of Digital, SparkLine Group</p>
+              </div>
+              <div class="flex justify-between items-center mt-6 pt-5 border-t border-gray-200">
+                <img src="incanto.svg" alt="SparkLine Logo" class="h-7" />
+                <img src="avatar-female-1.png" alt="Natalie Chua" class="w-10 h-10 rounded-full object-cover" />
+              </div>
+            </div>
+      
+          </div>
+        </div>
+      </div>
+      
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="pricing-section relative overflow-visible bg-gray-50">
+      <!-- Subtle Glow Background -->
+      <div class="absolute inset-0 -top-10 -bottom-10 blur-3xl opacity-30 bg-gradient-to-br from-[#E0ECFF] via-[#dceeff] to-[#F9FAFB] rounded-[3rem] z-0"></div>
+    
+      <div class="py-20 sm:py-24 lg:py-32 relative z-10" data-aos="fade-up">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          
+          <!-- Heading -->
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500">
+            Flexible Plans for Every Stage
+          </h2>
+          <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+            Choose the plan that fits your team’s needs and scale with confidence.
+          </p>
+    
+          <!-- Pricing Cards -->
+          <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Starter Plan -->
+            <div class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm hover:shadow-md transition">
+              <h3 class="text-xl font-semibold text-gray-900">Starter</h3>
+              <p class="mt-4 text-4xl font-bold text-gray-900">$0 <span class="text-base font-medium text-gray-500">/month</span></p>
+              <p class="mt-2 text-sm text-gray-500">Perfect for small teams getting started.</p>
+              <ul class="mt-6 space-y-4 text-sm text-gray-700 text-left">
+                <li>✔️ 1 Team Workspace</li>
+                <li>✔️ 5 GB Storage</li>
+                <li>✔️ Email Support</li>
+                <li>❌ No Automation Tools</li>
+              </ul>
+              <a href="#" class="block w-full px-5 py-3 mt-8 text-center text-sm font-medium text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50 transition">
+                Get Started Free
+              </a>
+            </div>
+    
+            <!-- Pro Plan (Highlighted with #facc15) -->
+            <div class="bg-white border-2 border-[#facc15] rounded-2xl p-8 shadow-lg hover:shadow-xl transition scale-105">
+              <h3 class="text-xl font-semibold text-gray-900">Pro</h3>
+              <p class="mt-4 text-4xl font-bold text-gray-900">$49 <span class="text-base font-medium text-gray-500">/month</span></p>
+              <p class="mt-2 text-sm text-gray-500">Ideal for growing businesses with expanding needs.</p>
+              <ul class="mt-6 space-y-4 text-sm text-gray-700 text-left">
+                <li>✔️ Unlimited Workspaces</li>
+                <li>✔️ 100 GB Secure Cloud Storage</li>
+                <li>✔️ Priority Support</li>
+                <li>✔️ Workflow Automation</li>
+              </ul>
+              <a href="#" class="block w-full px-5 py-3 mt-8 text-center text-sm font-medium text-white bg-[#facc15] hover:bg-yellow-400 rounded-lg transition">
+                Start 14-Day Trial
+              </a>
+            </div>
+    
+            <!-- Enterprise Plan -->
+            <div class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm hover:shadow-md transition">
+              <h3 class="text-xl font-semibold text-gray-900">Enterprise</h3>
+              <p class="mt-4 text-4xl font-bold text-gray-900">Custom</p>
+              <p class="mt-2 text-sm text-gray-500">Tailored solutions for large teams and enterprises.</p>
+              <ul class="mt-6 space-y-4 text-sm text-gray-700 text-left">
+                <li>✔️ Dedicated Account Manager</li>
+                <li>✔️ Unlimited Users & Storage</li>
+                <li>✔️ Full API Access</li>
+                <li>✔️ 24/7 Support + SLA</li>
+              </ul>
+              <a href="#contact" class="block w-full px-5 py-3 mt-8 text-center text-sm font-medium text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50 transition">
+                Contact Sales
+              </a>
+            </div>
+    
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- FAQ -->
+   <!-- FAQ -->
+<section id="faq" class="faq-section relative overflow-visible bg-white">
+  <!-- Background Glow -->
+  <div class="absolute inset-0 -top-10 -bottom-10 blur-3xl opacity-30 bg-gradient-to-br from-[#E0ECFF] via-[#dceeff] to-[#F9FAFB] rounded-[3rem] z-0"></div>
+
+  <div class="py-20 sm:py-24 lg:py-32 relative z-10" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Heading -->
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500">
+          Frequently Asked Questions
+        </h2>
+        <p class="mt-4 text-lg text-gray-600">
+          Can’t find the answer you’re looking for?
+          <a href="#contact" class="text-blue-600 hover:underline">Contact our team</a>.
+        </p>
+      </div>
+
+      <!-- FAQ List -->
+      <div class="mt-12 max-w-4xl mx-auto divide-y divide-gray-200">
+        
+        <!-- FAQ Item 1 -->
+        <div x-data="{ open: false }" class="py-6 hover:ring-1 hover:ring-blue-200 rounded-xl px-4 transition-all">
+          <button @click="open = !open" class="flex justify-between items-center w-full text-left">
+            <span class="text-lg font-medium text-gray-900">What’s included in the free plan?</span>
+            <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-500 transition-transform duration-200 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div x-show="open" x-collapse class="mt-3 text-base text-gray-600 leading-6">
+            The free plan includes 1 workspace, 5 GB storage, and email support — perfect for personal use or small projects.
+          </div>
+        </div>
+
+        <!-- FAQ Item 2 -->
+        <div x-data="{ open: false }" class="py-6 hover:ring-1 hover:ring-blue-200 rounded-xl px-4 transition-all">
+          <button @click="open = !open" class="flex justify-between items-center w-full text-left">
+            <span class="text-lg font-medium text-gray-900">Can I upgrade or downgrade anytime?</span>
+            <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-500 transition-transform duration-200 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div x-show="open" x-collapse class="mt-3 text-base text-gray-600 leading-6">
+            Yes, you can change plans at any time via your dashboard. Changes take effect immediately.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="relative py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white overflow-visible">
+  <!-- Background Glow -->
+  <div class="absolute inset-0 blur-3xl opacity-30 bg-gradient-to-tr from-[#E0ECFF] via-[#dceeff] to-[#F9FAFB] rounded-[2rem] z-0"></div>
+
+  <div class="max-w-xl sm:max-w-2xl lg:max-w-3xl mx-auto relative z-10">
+    <!-- Section Title -->
+    <div class="text-center mb-10">
+      <p class="text-sm font-semibold text-blue-500">Contact</p>
+      <h2 class="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500">
+        Get in touch
+      </h2>
+      <p class="mt-2 text-gray-600 text-sm sm:text-base">We’d love to hear from you! Please fill out the form below.</p>
+    </div>
+
+    <!-- Contact Form Card -->
+    <div class="relative bg-white rounded-2xl shadow-xl p-6 sm:p-8 md:p-10" x-data="contactForm()">
+      <form @submit.prevent="submitForm" class="space-y-6">
+        <!-- Name -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Full name</label>
+          <input type="text" x-model="form.name" placeholder="John Doe"
+            class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base" />
+          <template x-if="errors.name">
+            <p class="text-sm text-red-500 mt-1" x-text="errors.name"></p>
+          </template>
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Email</label>
+          <input type="email" x-model="form.email" placeholder="you@example.com"
+            class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base" />
+          <template x-if="errors.email">
+            <p class="text-sm text-red-500 mt-1" x-text="errors.email"></p>
+          </template>
+        </div>
+
+        <!-- Phone -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Phone</label>
+          <div class="flex flex-col sm:flex-row sm:items-center gap-2">
+            <select x-model="form.countryCode"
+              class="sm:w-28 w-full px-2 py-2 border border-gray-300 rounded-md bg-white text-sm">
+              <option value="+971">UAE +971</option>
+              <option value="+1">US +1</option>
+              <option value="+91">IN +91</option>
+            </select>
+            <input type="tel" x-model="form.phone" placeholder="555 123 456"
+              class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base" />
+          </div>
+          <template x-if="errors.phone">
+            <p class="text-sm text-red-500 mt-1" x-text="errors.phone"></p>
+          </template>
+        </div>
+
+        <!-- Message -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Message</label>
+          <textarea rows="4" x-model="form.message" placeholder="Your message..."
+            class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"></textarea>
+          <template x-if="errors.message">
+            <p class="text-sm text-red-500 mt-1" x-text="errors.message"></p>
+          </template>
+        </div>
+
+        <!-- Submit -->
+        <div>
+          <button type="submit"
+            class="w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 hover:ring-2 hover:ring-blue-300 transition text-sm sm:text-base">
+            Submit
+          </button>
+        </div>
+
+        <!-- Success -->
+        <template x-if="successMessage">
+          <p class="text-center text-green-600 font-medium mt-4 text-sm" x-text="successMessage"></p>
+        </template>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+  
+  </main>
+
+  <!-- Footer -->
+ 
+   
+    
+<!-- Footer -->
+<footer class="bg-gradient-to-r from-[#dceeff] via-[#cce2f9] to-[#c2dff4] text-gray-900 py-16 sm:pt-20 lg:pt-24" data-aos="fade-up">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center lg:flex-row justify-between space-y-10 lg:space-y-0">
+
+    <!-- Logo -->
+    <a href="#" aria-label="BinjaTech Homepage" class="shrink-0">
+      <img src="images/logo.png" alt="BinjaTech Logo" class="h-8 w-auto" />
+    </a>
+
+    <!-- Navigation -->
+    <nav class="flex flex-wrap justify-center lg:justify-start space-x-6 sm:space-x-12 text-sm font-medium text-gray-700">
+      <a href="#solutions" class="hover:text-blue-700 transition-colors duration-300" aria-label="Solutions">Solutions</a>
+      <a href="#services" class="hover:text-blue-700 transition-colors duration-300" aria-label="Services">Services</a>
+      <a href="#pricing" class="hover:text-blue-700 transition-colors duration-300" aria-label="Pricing">Pricing</a>
+      <a href="#contact" class="hover:text-blue-700 transition-colors duration-300" aria-label="Contact">Contact</a>
+    </nav>
+
+    <!-- Socials -->
+    <div class="flex space-x-3">
+      <a href="#" class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition hover:ring-2 hover:ring-blue-300" aria-label="Twitter">
+        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M23 3a10.9 10.9 0 01-3.14 1.53 
+           4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 
+           11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 
+           4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+        </svg>
+      </a>
+      <a href="#" class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition hover:ring-2 hover:ring-blue-300" aria-label="Facebook">
+        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 
+          2 12c0 5 3.66 9.13 8.44 9.88v-6.99H7.9v-2.89h2.54V9.84c0-2.5 
+          1.5-3.89 3.8-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 
+          0-1.63.77-1.63 1.56v1.87h2.78l-.44 
+          2.89h-2.34v6.99C18.34 21.13 22 17 22 12z"/>
+        </svg>
+      </a>
+      <a href="#" class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition hover:ring-2 hover:ring-blue-300" aria-label="Instagram">
+        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M7 2C4.243 2 2 4.243 2 7v10c0 
+          2.757 2.243 5 5 5h10c2.757 0 5-2.243 
+          5-5V7c0-2.757-2.243-5-5-5H7zm10 
+          2c1.654 0 3 1.346 3 3v10c0 1.654-1.346 
+          3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 
+          1.346-3 3-3h10zM12 7a5 5 0 100 10 5 
+          5 0 000-10zm0 2a3 3 0 110 6 3 3 
+          0 010-6zm4.5-2a1 1 0 100 2 1 1 0 000-2z" />
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Bottom Text -->
+  <div class="mt-12 text-center text-sm text-gray-600 border-t border-gray-300 pt-6">
+    © <span id="year"></span> BinjaTech. All rights reserved.
+  </div>
+
+  <!-- Year Script -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</footer>
+
+
+<!-- Back to Top Button -->
+<div 
+  x-data="{ show: false }" 
+  x-init="window.addEventListener('scroll', () => show = window.scrollY > 300)"
+  x-show="show" 
+  x-transition 
+  class="fixed bottom-6 right-6 z-50"
+>
+  <button 
+    @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
+    class="p-3 rounded-full bg-[#facc15] text-white shadow-lg hover:bg-yellow-500 transition"
+    aria-label="Back to Top"
+  >
+    <!-- Up Arrow Icon -->
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@1.6.0/dist/lottie-player.js"></script>
+<script>AOS.init({ duration: 1000, once: true });</script>
+<script>document.getElementById("year")?.textContent = new Date().getFullYear();</script>
+<script>
+  function contactForm() {
+    return {
+      form: {
+        name: '',
+        email: '',
+        phone: '',
+        countryCode: '+971',
+        message: ''
+      },
+      errors: {},
+      successMessage: '',
+      submitForm() {
+        this.errors = {};
+        if (!this.form.name) this.errors.name = 'Full name is required';
+        if (!this.form.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.form.email)) this.errors.email = 'Valid email required';
+        if (!this.form.phone || !/^\d{5,15}$/.test(this.form.phone)) this.errors.phone = 'Valid phone number required';
+        if (!this.form.message) this.errors.message = 'Message cannot be empty';
+
+        if (Object.keys(this.errors).length === 0) {
+          // Simulate success
+          this.successMessage = 'Your message has been sent successfully!';
+          setTimeout(() => {
+            this.successMessage = '';
+            this.form = { name: '', email: '', phone: '', countryCode: '+971', message: '' };
+          }, 3000);
+        }
+      }
+    }
+  }
+</script>
+</body>
+</html>
+
